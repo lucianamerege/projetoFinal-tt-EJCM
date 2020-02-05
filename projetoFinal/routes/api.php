@@ -39,3 +39,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails');
 });
+
+//ROTAS PARAS AS FOTOS DO USER
+Route::get('showPhoto/{id}', 'UserController@showPhoto'); // mostra a foto do user
+Route::get('downloadPhoto/{id}', 'UserController@downloadPhoto'); //Baixa a foto do user
