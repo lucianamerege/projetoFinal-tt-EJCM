@@ -37,7 +37,7 @@ Route::post('login', 'API\PassportController@login');
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
-    Route::post('getDetails', 'API\PassportController@getDetails');
+    Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
 });
 
 //ROTAS PARAS AS FOTOS DO USER

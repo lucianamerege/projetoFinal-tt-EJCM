@@ -71,9 +71,10 @@ class UserController extends Controller
         return response()->json(['Usuário Deletado']);
     }
 
-    public function showPhoto($id){
-        $user = User::findOrFail($id);
-        return Storage::download($user->photo);
+    public function showPhoto($id){        //Essa função mostra a foto para o usuário pelo front
+        $user = User::findOrFail($id);      //permitindo que o mesmo faça download de sua foto.     
+        return Storage::download($user->photo);  
 
     }
+
 }

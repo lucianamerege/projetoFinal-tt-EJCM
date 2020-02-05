@@ -18,7 +18,7 @@ class PassportController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'c_password' => 'required|same:password',
+            
         ]);
         if ($validator -> fails()) {
             return response()->json(['error' => $validator->errors()], 401);
@@ -27,9 +27,12 @@ class PassportController extends Controller
         $newUser->name = $request->name;
         $newUser->email = $request->email;
         $newUser->password = bcrypt($request->password);
-        $newUser->save();
+        $newUser->isAdmin = $request->isAdmin;
+        
         $success['token'] = $newUser->createToken('MyApp')->accessToken;
         $success['name'] = $newUser->name;
+
+        $newUser->save();
         return response()->json(['success' => $success], $this->successStatus);
     }
     

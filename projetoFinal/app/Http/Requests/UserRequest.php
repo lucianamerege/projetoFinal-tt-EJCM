@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
+            'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048' //mexer aqui
         ];
     }
 
@@ -36,7 +36,7 @@ class UserRequest extends FormRequest
         throw new
         HttpResponseException(response()->json($validator->errors(),
         422));
-}
+    }
 
 
     
