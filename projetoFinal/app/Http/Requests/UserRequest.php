@@ -16,7 +16,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,7 +27,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048' //mexer aqui
+            'name' => 'required|string',
+            'email' => 'required,unique:users,email',
+            'password' => 'required',
+            'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048', //mexer aqui
         ];
     }
 
