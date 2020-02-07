@@ -3,31 +3,33 @@ import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators} f
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.page.html',
-  styleUrls: ['./cadastro.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class CadastroPage implements OnInit {
+export class LoginPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private router: Router) {
+  constructor(private router: Router, public formbuilder: FormBuilder) {
     this.registerForm = this.formbuilder.group({
-      name: [null, [Validators.required, Validators.minLength(8)]],
       email:[null, [Validators.required, Validators.email]],
-      password:[null,[Validators.required, Validators.minLength(5)]],
-      passwordConfirm:[null,[Validators.required]]
+      password:[null,[Validators.required, Validators.minLength(5)]]
     });
+   }
+
+  ngOnInit() {
   }
 
   submitForm(form){
     console.log(form.value);
   }
 
-  ngOnInit() {
+  cadastro(){
+    this.router.navigate(['/cadastro']);
   }
 
-  cadastrado (){
+  login(){
     this.router.navigate(['/tabs/tab1']);
   }
 
