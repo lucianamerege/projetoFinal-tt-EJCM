@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
+    <div slot="start" class="setaVoltar">
+      <ion-icon name="arrow-back" (click)="voltarPaginaAnterior()"></ion-icon>
+    </div>
     <ion-title>
-      Tab Three
+      Configurações
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="power"></ion-icon>
+      <ion-button class="botaoLista">
+        <p> Logout </p>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
