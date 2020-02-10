@@ -1,0 +1,23 @@
+.foto {
+    border: 5px solid grey;
+    height: auto;
+}
+
+.input {
+    --border: black;
+}
+
+.icon {
+    display: flex;
+    justify-content: space-around;
+}
+
+.alinhar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botao {
+    --background: #1AFFC8;
+    --color: #000000;
+}
