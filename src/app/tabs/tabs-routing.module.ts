@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { LoginGuard } from '../guards/login/login.guard';
 
 const routes: Routes = [
   {
@@ -33,7 +34,17 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../tab3/tab3.module').then(m => m.Tab3PageModule),
+          }
+        ]
+      },
+      {
+        path: 'oferta',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./oferta/oferta.module').then(m => m.OfertaPageModule)
           }
         ]
       },
@@ -48,7 +59,8 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
-  }
+  },
+
 ];
 
 @NgModule({
