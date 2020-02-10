@@ -2,7 +2,7 @@
 <ion-content class="container">
   <div>
     <ion-title>Liber</ion-title>
-    <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+    <form [formGroup]="loginForm" (ngSubmit)="logarUser(loginForm)">
       <ion-item class="inputs">
         <ion-label position="floating">Email</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
@@ -11,8 +11,8 @@
         <ion-label position="floating">Senha</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-      <ion-button type="submit"shape="round" mode="ios" [disabled]="registerForm.invalid" (click)="login()">Logar</ion-button>
-      <ion-button type="submit"shape="round" mode="ios" (click)="cadastro()">Cadastre-se</ion-button>
+      <ion-button type="submit"shape="round" mode="ios" [disabled]="loginForm.invalid">Logar</ion-button>
+      <ion-button type="button"shape="round" mode="ios" (click)="cadastro()">Cadastre-se</ion-button>
     </form>
   </div>
 </ion-content>

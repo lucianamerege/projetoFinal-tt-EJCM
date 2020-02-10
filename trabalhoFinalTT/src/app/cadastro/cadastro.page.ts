@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,7 +12,7 @@ export class CadastroPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private router: Router) {
+  constructor(public AuthService: AuthService, public formbuilder: FormBuilder, private router: Router) {
     this.registerForm = this.formbuilder.group({
       name: [null, [Validators.required, Validators.minLength(8)]],
       email:[null, [Validators.required, Validators.email]],
@@ -20,15 +21,20 @@ export class CadastroPage implements OnInit {
     });
   }
 
-  submitForm(form){
-    console.log(form.value);
-  }
-
   ngOnInit() {
   }
 
-  cadastrado (){
-    this.router.navigate(['/tabs/tab1']);
+  registrarUser( registerForm ) {
+  
+    if ( registerForm.status == "VALID") {
+
+      this.AuthService.registrarUser( registerForm.value ).subscribe(
+        ( res ) => {
+          console.log( res );
+          this.router.navigate(['/login']);
+        }
+      )
+    }
   }
 
 }

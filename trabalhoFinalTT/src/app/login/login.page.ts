@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,34 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  registerForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private router: Router, public formbuilder: FormBuilder) {
-    this.registerForm = this.formbuilder.group({
-      email:[null, [Validators.required, Validators.email]],
-      password:[null,[Validators.required, Validators.minLength(5)]]
+  constructor(private router: Router, public formbuilder: FormBuilder, public AuthService: AuthService) {
+    this.loginForm = this.formbuilder.group({
+      email:[null, [Validators.required]],
+      password:[null,[Validators.required]]
     });
    }
 
   ngOnInit() {
   }
 
-  submitForm(form){
-    console.log(form.value);
-  }
-
   cadastro(){
     this.router.navigate(['/cadastro']);
   }
 
-  login(){
-    this.router.navigate(['/tabs/tab1']);
-  }
+  logarUser( loginForm ){
 
+    if ( loginForm.status == "VALID"){
+      this.AuthService.logarUser( loginForm.value ).subscribe(
+        (res) => {
+          console.log( res );
+          console.log( res.message );
+          console.log( loginForm );
+          localStorage.setItem('userToken', res.success.token);
+          this.router.navigate(['/tabs/tab1']);
+        }
+      );
+    }
+  }
 }
