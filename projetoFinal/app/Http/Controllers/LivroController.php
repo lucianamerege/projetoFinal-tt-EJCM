@@ -11,9 +11,11 @@ class LivroController extends Controller
         $livro = new Livro;
 
         $livro->name = $request->name;
+        $livro->genero = $request->genero;
         $livro->autor = $request->autor;
         $livro->preco = $request->preco;
         $livro->resumo = $request->resumo;
+        $livro->estado = $request->estado;
         $livro->save();
         
         return response()->json([$livro]);
@@ -36,6 +38,9 @@ class LivroController extends Controller
             if($request->name){
                 $livro->name = $request->name;
             }
+            if($request->genero){
+                $livro->genero = $request->genero;
+            }
             if($request->autor){
                 $livro->autor = $request->autor;
             }
@@ -44,6 +49,9 @@ class LivroController extends Controller
             }
             if($request->resumo){
                 $livro->resumo = $request->resumo;
+            }
+            if($request->estado){
+                $livro->estado = $request->estado;
             }
             $livro->save();
             return response()->json([$livro]);

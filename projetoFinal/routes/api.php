@@ -31,6 +31,27 @@ Route::post('criaLivro', 'LivroController@createLivro');//rota para criar uma li
 Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//rota para atualizar uma livro específica
 Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//rota para deletar uma livro específica
 
+// ROTAS PARA COMENTÁRIOS
+Route::get('listaComentario', 'ComentarioController@listComentario'); //rota para listar um Comentario
+Route::get('mostraComentario/{id}', 'ComentarioController@showComentario');//rota para mostrar um Comentario específico
+Route::post('criaComentario', 'ComentarioController@createComentario');//rota para criar um Comentario
+Route::put('atualizaComentario/{id}', 'ComentarioController@updateComentario');//rota para atualizar um Comentario específico
+Route::delete('deletaComentario/{id}', 'ComentarioController@deleteComentario');//rota para deletar um Comentario específico
+
+// ROTAS PARA HISTÓRICO
+Route::get('listaHistorico', 'HistoricoController@listHistorico'); //rota para listar um Historico
+Route::get('mostraHistorico/{id}', 'HistoricoController@showHistorico');//rota para mostrar um Historico específico
+Route::post('criaHistorico', 'HistoricoController@createHistorico');//rota para criar um Historico
+Route::put('atualizaHistorico/{id}', 'HistoricoController@updateHistorico');//rota para atualizar um Historico específico
+Route::delete('deletaHistorico/{id}', 'HistoricoController@deleteHistorico');//rota para deletar um Historico específico
+
+// ROTAS PARA HISTÓRICO
+Route::get('listaGenero', 'HistoricoController@listGenero'); //rota para listar um Genero
+Route::get('mostraGenero/{id}', 'HistoricoController@showGenero');//rota para mostrar um Genero específico
+Route::post('criaGenero', 'HistoricoController@createGenero');//rota para criar um Genero
+Route::put('atualizaGenero/{id}', 'HistoricoController@updateGenero');//rota para atualizar um Genero específico
+Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//rota para deletar um Genero específico
+
 //ROTAS PARA FUNCIONALIDADES
 Route::post('register', 'API\PassportController@register');
 Route::post('login', 'API\PassportController@login');
