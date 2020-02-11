@@ -7,16 +7,25 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
+  <ion-list>
+    <ion-list-header>Multiple Selection</ion-list-header>
+  
+    <ion-item>
+      <ion-label>Toppings</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+        <ion-select-option value="bacon">Bacon</ion-select-option>
+        <ion-select-option value="olives">Black Olives</ion-select-option>
+        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+        <ion-select-option value="peppers">Green Peppers</ion-select-option>
+        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+        <ion-select-option value="onions">Onions</ion-select-option>
+        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+        <ion-select-option value="pineapple">Pineapple</ion-select-option>
+        <ion-select-option value="sausage">Sausage</ion-select-option>
+        <ion-select-option value="Spinach">Spinach</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
     <ion-list lines="none">
       <ion-list-header>
         <ion-label>Resources</ion-label>

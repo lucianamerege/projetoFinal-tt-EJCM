@@ -1,21 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <div slot="start" class="setaVoltar">
-      <ion-icon name="arrow-back" (click)="voltarPaginaAnterior()"></ion-icon>
-    </div>
-    <ion-title>
-      Configurações
-    </ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="esquerda" (click)="voltarPaginaAnterior()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col class="titulo">
+          <ion-title>
+            Configurações
+          </ion-title>
+        </ion-col>
+        <ion-col class="vazia"></ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item class="bolo" (click)="logout()">
       <ion-icon name="power"></ion-icon>
-      <ion-button class="botaoLista">
-        <p> Logout </p>
-      </ion-button>
+      <p class="palavra"> Logout </p>
     </ion-item>
   </ion-list>
 
