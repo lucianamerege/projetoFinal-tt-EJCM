@@ -1,24 +1,8 @@
-ion-button{
-  --color: #04664F;
-  --background: #FFFFFF;
-  margin-top: 5%;
+.setaVoltar{
+    width:5vw;
 }
-
-.alinhar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-
-ion-content.background {
-  --background: url('../../assets/pessoalendo.png') no-repeat center center / cover;
-  width: 100%;
-  height: 100%;
-}
-
-.input {
-  margin-top: 2%;
-  --background: rgba(255,255,255, 0.7);
+.botaoLista{
+    --background: #fff;
+    color: #000;
+    font-size: medium;
 }

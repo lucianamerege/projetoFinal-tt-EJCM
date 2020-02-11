@@ -1,16 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <div slot="start" class="setaVoltar">
+      <ion-icon name="arrow-back" (click)="voltarPaginaAnterior()"></ion-icon>
+    </div>
+    <ion-title>
+      Configurações
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="power"></ion-icon>
+      <ion-button class="botaoLista">
+        <p> Logout </p>
+      </ion-button>
+    </ion-item>
+  </ion-list>
 
-<ion-content class="background">
-<div class="alinhar">
-  <ion-item class="input">
-    <ion-label position="floating">Email</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-  <ion-item class="input">
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-  <ion-button shape="round">Entrar</ion-button>
-  <ion-button shape="round">Cadastrar</ion-button>
-</div>
 </ion-content>
