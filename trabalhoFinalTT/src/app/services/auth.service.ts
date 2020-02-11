@@ -28,5 +28,9 @@ export class AuthService {
     return this.HttpClient.get( this.apiUrl + 'logout', this.httpHeaders );
   }
 
+  getLivro(id: any): Observable<any>{
+    return this.HttpClient.get(this.apiUrl + 'mostraLivro/' + id);
+  }
+
   constructor(public HttpClient: HttpClient ) { }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtractorExpectedConditions } from 'protractor';
+import {AuthService} from '../../services/auth.service'
 
 @Component({
   selector: 'app-livro-home',
@@ -8,7 +9,12 @@ import { ProtractorExpectedConditions } from 'protractor';
 })
 export class LivroHomeComponent implements OnInit {
 
-  constructor() { }
+  dadosLivro;
+  nomeLivro;
+  
+  constructor(public AuthService: AuthService) { 
+  
+  }
 
   ngOnInit() {}
 
@@ -28,4 +34,14 @@ export class LivroHomeComponent implements OnInit {
       name: "Pjo"
     },
   ]
+
+  getInfo(id){
+    this.AuthService.getLivro(id).subscribe(
+      (res) => {
+        this.dadosLivro=res;
+        console.log(this.dadosLivro);
+        this.nomeLivro=this.dadosLivro.nomeLivro;
+      }
+    )
+  };
 }
