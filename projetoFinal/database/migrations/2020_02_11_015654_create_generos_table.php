@@ -15,19 +15,7 @@ class CreateGenerosTable extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('terror');
-            $table->string('romance');
-            $table->string('drama');
-            $table->string('comedia');
-            $table->string('fantasia');
-            $table->string('ficcao');
-            $table->string('misterio');
-            $table->string('biografia');
-            $table->string('suspense');
-            $table->string('autobiografia');
-            $table->string('contos');
-            $table->string('policial');
-            $table->string('poesia');
+            $table->string('name');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

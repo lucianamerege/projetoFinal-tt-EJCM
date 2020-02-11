@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 use App\User;
+use App\Livro;
+use App\Historico;
 use App\Notifications\Compra;
 use App\Notifications\Venda;
 
@@ -80,4 +82,16 @@ class UserController extends Controller
 
     }
 
+    public function compraLivro($livro_id){
+        $user = Auth::user();
+        $livro = Livro::findOrFail($id);
+        $livro->status = false;
+        $livro->user_id = $user->id;
+        $livro->save();
+        return response()->json(['Compra Efetuada']);
+
+        //$user->notify(new Compra($user));
+        //return response()->json(['compra' => 'Compra Feita!', 'preco' => $priceTotal]);
+    }
+        
 }

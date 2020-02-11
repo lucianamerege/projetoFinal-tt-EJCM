@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Historico;
+use App\User;
+use App\Livro;
 
 class HistoricoController extends Controller
 {    

@@ -42,8 +42,15 @@ class User extends Authenticatable
     //Adicionando One-to-Many com comentario
     public function comentarios(){
         return $this->hasMany('App\Comentario',"user_id");
+        
+    }
+    public function livros(){
+        return $this->hasMany('App\Livro',"livro_id");
     }
 
+    public function historico(){
+        return $this->hasOne('App\Historico',"historico_id");
+    }
 
 
 

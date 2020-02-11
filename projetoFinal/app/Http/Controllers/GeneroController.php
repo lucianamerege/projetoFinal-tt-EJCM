@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Genero;
-
+use App\Livro;
+use App\User;
 class GeneroController extends Controller
 {
     public function createGenero(Request $request){

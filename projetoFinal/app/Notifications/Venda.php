@@ -41,9 +41,10 @@ class Venda extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('Olá,' . $user->name . '!')
+                    ->line('Sua venda foi efetuada com sucesso!')
+                    ->action('Confira o produto vendido', url('/'))
+                    ->line('Obrigado por usar Liber!');
     }
 
     /**

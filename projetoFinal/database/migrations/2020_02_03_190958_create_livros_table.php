@@ -18,9 +18,11 @@ class CreateLivrosTable extends Migration
             $table->string('name');
             $table->string('genero');
             $table->string('autor');
-            $table->longText('preco');
-            $table->float('resumo');
+            $table->float('preco');
+            $table->string('resumo');
             $table->string('estado');
+            $table->boolean('status')->default(true);
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
