@@ -28,6 +28,7 @@ class CreateGenerosTable extends Migration
             $table->string('contos');
             $table->string('policial');
             $table->string('poesia');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
         

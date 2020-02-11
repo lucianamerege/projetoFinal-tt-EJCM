@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comentario;
+use App\User;
+use Carbon\Carbon;
 
 class ComentarioController extends Controller
 {
     public function createComentario(Request $request){
         
+        $current = new Carbon();
         $comentario = new Comentario;
         
         $comentario->text = $request->text;
-        $comentário->user_id = $request->user_id;
+        $comentario->user_id = $request->user_id;
         $comentario->save();
-        return response()->json([$comentario]);
+        return response()->json([$comentario,$current]);
     }
     
     public function listComentario(){

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 use App\User;
+use App\Notifications\Compra;
+use App\Notifications\Venda;
 
 class UserController extends Controller
 {
