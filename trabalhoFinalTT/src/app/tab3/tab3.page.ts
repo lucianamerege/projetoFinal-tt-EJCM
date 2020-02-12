@@ -25,5 +25,8 @@ export class Tab3Page {
       }
     );
   }
+  historico() {
+    this.router.navigate(['/historico']);
+  }
 
 }

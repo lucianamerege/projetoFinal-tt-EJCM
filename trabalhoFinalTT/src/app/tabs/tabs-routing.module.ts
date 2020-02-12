@@ -50,6 +50,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'historico',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./historico/historico.module').then(m => m.HistoricoPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab2',
         pathMatch: 'full'
@@ -60,6 +70,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/tab2',
     pathMatch: 'full'
+  },
+  {
+    path: 'historico',
+    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
   },
 
 ];
