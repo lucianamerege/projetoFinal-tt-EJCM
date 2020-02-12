@@ -19,7 +19,7 @@ class CreateLivrosTable extends Migration
             $table->string('genero');
             $table->string('autor');
             $table->float('preco');
-            $table->string('resumo');
+            $table->longText('resumo');
             $table->string('estado');
             $table->boolean('status')->default(true);
             $table->string('photo')->nullable();

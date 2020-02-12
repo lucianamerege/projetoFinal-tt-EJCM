@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Livro;
 use App\User;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,6 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //factory(App\Livro::class,5)->create(); // $this->call(UsersTableSeeder::class);
+        $this->call(LivroTableSeeder::class);
     }
 }
