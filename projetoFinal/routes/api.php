@@ -45,7 +45,7 @@ Route::post('criaHistorico', 'HistoricoController@createHistorico');//rota para 
 Route::put('atualizaHistorico/{id}', 'HistoricoController@updateHistorico');//rota para atualizar um Historico específico
 Route::delete('deletaHistorico/{id}', 'HistoricoController@deleteHistorico');//rota para deletar um Historico específico
 
-// ROTAS PARA HISTÓRICO
+// ROTAS PARA GENERO DE LIVROS
 Route::get('listaGenero', 'HistoricoController@listGenero'); //rota para listar um Genero
 Route::get('mostraGenero/{id}', 'HistoricoController@showGenero');//rota para mostrar um Genero específico
 Route::post('criaGenero', 'HistoricoController@createGenero');//rota para criar um Genero
@@ -59,10 +59,12 @@ Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::post('listHistorico', 'PassportController@listHistorico');
-    Route::put('compraLivro/{livro_id}', 'UserController@compraLivro');
+    Route::post('listHistorico', 'API\PassportController@listHistorico');
+    Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
 });
 
 //ROTAS PARAS AS FOTOS DO USER
 Route::get('showPhoto/{id}', 'UserController@showPhoto'); // mostra a foto do user
 Route::get('downloadPhoto/{id}', 'UserController@downloadPhoto'); //Baixa a foto do user
+Route::get('showPhoto/{id}', 'LivroController@showPhoto'); // mostra a foto do livro
+Route::get('downloadPhoto/{id}', 'LivroController@downloadPhoto'); //Baixa a foto do livro

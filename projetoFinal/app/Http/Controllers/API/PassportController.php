@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\User;
+use App\Livro;
+use App\Historico;
 
 class PassportController extends Controller
 {
