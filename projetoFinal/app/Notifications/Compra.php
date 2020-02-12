@@ -39,9 +39,9 @@ class Compra extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {
+    {   $user = $notifiable;
         return (new MailMessage)
-                    ->greeting('Olá,' . $user->name . '!')
+                    ->greeting('Olá, '.$user->name)
                     ->line('Sua compra foi efetuada com sucesso!')
                     ->action('Confira seu produto', url('/'))
                     ->line('Obrigado por usar Liber!');

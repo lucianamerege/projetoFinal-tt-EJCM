@@ -10,6 +10,7 @@ use DB;
 use App\User;
 use App\Livro;
 use App\Historico;
+use App\Notifications\Compra;
 
 class PassportController extends Controller
 {
@@ -64,19 +65,22 @@ class PassportController extends Controller
     public function compraLivro($livro_id){
         $user = Auth::user();
         $livro = Livro::findOrFail($livro_id);
+        if ($livro->status == false) {
+          return response()->json(['Este livro não existe']);
+        }
+        else{
         $livro->status = false;
         $livro->user_id = $user->id;
         $livro->save();
+        $user->notify(new Compra($user));
         return response()->json(['Compra Efetuada']);
-
-        //$user->notify(new Compra($user));
-        //return response()->json(['compra' => 'Compra Feita!', 'preco' => $priceTotal]);
-    }
-
-    public function listHistorico(){
-        $user = Auth::user();
-        return response()->json($user->livros);
+        }
     }
 
 
+    public function listHistorico($user_id) {
+
+           $user = User::with('livros')->find($user_id, 'id');
+           return $user;
+       }
 }

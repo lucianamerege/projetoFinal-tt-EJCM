@@ -59,12 +59,12 @@ Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::post('listHistorico', 'API\PassportController@listHistorico');
+    Route::get('listHistorico/{user_id}', 'API\PassportController@listHistorico');
     Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
 });
 
 //ROTAS PARAS AS FOTOS DO USER
 Route::get('showPhoto/{id}', 'UserController@showPhoto'); // mostra a foto do user
 Route::get('downloadPhoto/{id}', 'UserController@downloadPhoto'); //Baixa a foto do user
-Route::get('showPhoto/{id}', 'LivroController@showPhoto'); // mostra a foto do livro
-Route::get('downloadPhoto/{id}', 'LivroController@downloadPhoto'); //Baixa a foto do livro
+Route::get('showPhoto/{livro_id}', 'LivroController@showPhoto'); // mostra a foto do livro
+Route::get('downloadPhoto/{livro_id}', 'LivroController@downloadPhoto'); //Baixa a foto do livro
