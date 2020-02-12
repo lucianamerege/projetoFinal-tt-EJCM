@@ -27,10 +27,5 @@ export class AuthService {
     this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
     return this.HttpClient.get( this.apiUrl + 'logout', this.httpHeaders );
   }
-
-  getLivro(id: any): Observable<any>{
-    return this.HttpClient.get(this.apiUrl + 'mostraLivro/' + id);
-  }
-
   constructor(public HttpClient: HttpClient ) { }
 }

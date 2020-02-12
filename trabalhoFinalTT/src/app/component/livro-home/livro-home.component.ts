@@ -31,17 +31,27 @@ export class LivroHomeComponent implements OnInit {
       name: "Alice"
     },
     {
-      name: "Pjo"
+      name: "Dom Quixote"
     },
+    {
+      name: "Orfanato da senhorita Peregrine para Crianças Peculiares"
+    },
+    {
+      name: "O Castelo das Águias"
+    },
+    {
+      name: "Box O Senhor dos Anéis"
+    },
+
   ]
 
-  getInfo(id){
-    this.AuthService.getLivro(id).subscribe(
-      (res) => {
-        this.dadosLivro=res;
-        console.log(this.dadosLivro);
-        this.nomeLivro=this.dadosLivro.nomeLivro;
-      }
-    )
-  };
+  //getInfo(id){
+   // this.AuthService.getLivro(id).subscribe(
+   //   (res) => {
+    //    this.dadosLivro=res;
+    //    console.log(this.dadosLivro);
+  //      this.nomeLivro=this.dadosLivro.nomeLivro;
+  //    }
+ //   )
+ // };
 }

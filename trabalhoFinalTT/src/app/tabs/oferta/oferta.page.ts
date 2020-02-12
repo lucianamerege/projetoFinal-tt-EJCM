@@ -19,6 +19,9 @@ export class OfertaPage implements OnInit {
       sinopse: [null],
       info: [null],
     })
-}
-ngOnInit(){}
+  }
+  ngOnInit(){}
+  voltaPraHome(){
+    this.router.navigate(['/tabs/tab2']);
+  }
 }
