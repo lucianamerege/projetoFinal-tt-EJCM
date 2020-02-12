@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,7 +8,17 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  
+  praOferta(){
+    this.router.navigate(['/tabs/oferta']);
+  }
+  isActive(): boolean{
+
+    let data = localStorage.getItem('userToken');
+    if( data )
+      return false;
+    else
+      return true;
+  }
 }

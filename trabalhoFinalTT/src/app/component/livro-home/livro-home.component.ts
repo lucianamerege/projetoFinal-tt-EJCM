@@ -33,6 +33,19 @@ export class LivroHomeComponent implements OnInit {
     {
       name: "Pjo"
     },
+    {
+      name: "Dom Quixote"
+    },
+    {
+      name: "Orfanato da senhorita Peregrine para Crianças Peculiares"
+    },
+    {
+      name: "O Castelo das Águias"
+    },
+    {
+      name: "Box O Senhor dos Anéis"
+    },
+
   ]
 
   getInfo(id){
