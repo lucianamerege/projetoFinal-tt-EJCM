@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { LivroHomeComponent } from '../component/livro-home/livro-home.component';
-import { FabComponent } from '../component/fab/fab/fab.component';
 
 @NgModule({
   imports: [
@@ -14,6 +13,6 @@ import { FabComponent } from '../component/fab/fab/fab.component';
     FormsModule,
     RouterModule.forChild([{ path: '', component: Tab2Page }]),
   ],
-  declarations: [Tab2Page, LivroHomeComponent, FabComponent]
+  declarations: [Tab2Page, LivroHomeComponent]
 })
 export class Tab2PageModule {}
