@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-
+import { PrecisaEstarLogadoGuard } from '../guards/precisaEstarLogado/precisa-estar-logado.guard';
 const routes: Routes = [
   {
     path: 'tabs',
@@ -13,8 +13,9 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
+              import('../tab1/tab1.module').then(m => m.Tab1PageModule),
+              canActivate: [PrecisaEstarLogadoGuard]
+            }
         ]
       },
       {
@@ -34,6 +35,7 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab3/tab3.module').then(m => m.Tab3PageModule),
+              canActivate: [PrecisaEstarLogadoGuard]
           }
         ]
       },
@@ -49,14 +51,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab2',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/tab2',
     pathMatch: 'full'
   },
 
