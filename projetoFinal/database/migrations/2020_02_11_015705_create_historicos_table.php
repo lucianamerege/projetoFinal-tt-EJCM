@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLivrosTable extends Migration
+class CreateHistoricosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,21 @@ class CreateLivrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('livros', function (Blueprint $table) {
+        Schema::create('historicos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('genero');
             $table->string('autor');
-            $table->float('preco');
-            $table->longText('resumo');
-            $table->string('estado');
-            $table->boolean('status')->default(true);
-            $table->string('photo')->nullable();
+            $table->integer('data');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
         
         
         //Adicionando Foreign Key
-        Schema::table('livros', function (Blueprint $table){
+        Schema::table('historicos', function (Blueprint $table){
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -42,6 +37,6 @@ class CreateLivrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livros');
+        Schema::dropIfExists('historicos');
     }
 }

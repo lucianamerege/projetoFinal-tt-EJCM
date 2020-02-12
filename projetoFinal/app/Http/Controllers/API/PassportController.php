@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\User;
+use App\Livro;
+use App\Historico;
 
 class PassportController extends Controller
 {
@@ -58,4 +60,23 @@ class PassportController extends Controller
         $accessToken->revoke();
         return response()->json(null, 204);
     }
+
+    public function compraLivro($livro_id){
+        $user = Auth::user();
+        $livro = Livro::findOrFail($livro_id);
+        $livro->status = false;
+        $livro->user_id = $user->id;
+        $livro->save();
+        return response()->json(['Compra Efetuada']);
+
+        //$user->notify(new Compra($user));
+        //return response()->json(['compra' => 'Compra Feita!', 'preco' => $priceTotal]);
+    }
+
+    public function listHistorico(){
+        $user = Auth::user();
+        return response()->json($user->livros);
+    }
+
+
 }
