@@ -8,14 +8,11 @@
 </ion-header>
 
 <ion-content>
-    <img class="perfil" src="assets/teste.jpg" alt="perfil" width="100" height="100" />
+    <img class="perfil" src="assets/teste.jpg" alt="perfil" />
     <ion-card-title class="alinhar">malu</ion-card-title>
     <div class="espaco">Suas ofertas:</div>
-    <app-slide *ngFor="let slide of slide" [slideInfo]="slide" (slideClicked="goToLivro($event)")></app-slide>
+    <app-slide [slides]="slides"></app-slide>
     <div class="espaco">Suas avaliações:</div>
-    <app-avaliacao *ngFor="let avaliacao of avaliacao" [avaliacao]="avaliacao"></app-avaliacao>
-
-
-
+    <app-avaliacao [avaliacoes]="avaliacoes"></app-avaliacao>
 
 </ion-content>

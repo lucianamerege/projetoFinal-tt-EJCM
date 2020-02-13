@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-avaliacao',
@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./avaliacao.component.scss'],
 })
 export class AvaliacaoComponent implements OnInit {
-
+    @Input() avaliacoes;
   constructor() { }
 
   ngOnInit() {}
 
+  ionViewWillEnter(){
+      console.log(this.avaliacoes)
+  }
 }
