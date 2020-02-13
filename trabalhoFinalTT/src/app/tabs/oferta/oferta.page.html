@@ -1,5 +1,5 @@
 <ion-content class="ion-padding">
-    <form [formGroup]="ofertaForm" (ngSubmit)="submitForm(registerForm)">
+    <form [formGroup]="ofertaForm" (ngSubmit)="criaLivro(ofertaForm)">
 
         <ion-row>
             <ion-col size="4" class="foto">
@@ -72,7 +72,7 @@
             <ion-label>Gêneros</ion-label>
             <ion-select multiple="true" cancelText="Cancelar" okText="Salvar">
                 <ion-select-option value="terror">Terror</ion-select-option>
-                <ion-select-option value="comédia">COmédia</ion-select-option>
+                <ion-select-option value="comédia">Comédia</ion-select-option>
                 <ion-select-option value="aventura">Aventura</ion-select-option>
                 <ion-select-option value="suspense">Romance</ion-select-option>
                 <ion-select-option value="ficcao">Ficção</ion-select-option>

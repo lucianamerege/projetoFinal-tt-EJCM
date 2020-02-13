@@ -18,6 +18,9 @@ export class LivroService {
   listaLivro( ): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'listaLivro', this.httpHeaders);
   }
-  
+  criaLivro(form): Observable<any> {
+    return this.HttpClient.post(this.apiUrl + 'criaLivro', form, this.httpHeaders)
+
+}
   constructor(public HttpClient: HttpClient) { }
 }

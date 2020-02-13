@@ -7,7 +7,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 })
 export class SlideComponent implements OnInit {
     @Input() slideInfo;
-    @Output()slideClicked = new EventEmitter<number>();
+   /*@Output()slideClicked = new EventEmitter<number>();*/
 
   constructor() { }
 
