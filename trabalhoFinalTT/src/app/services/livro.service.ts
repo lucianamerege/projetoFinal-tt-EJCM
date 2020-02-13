@@ -18,9 +18,11 @@ export class LivroService {
   listaLivro( ): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'listaLivro', this.httpHeaders);
   }
+  showLivro(id:number): Observable<any> {
+    return this.HttpClient.get( this.apiUrl + 'mostraLivro/' + id , this.httpHeaders);
+  }
   criaLivro(form): Observable<any> {
-    return this.HttpClient.post(this.apiUrl + 'criaLivro', form, this.httpHeaders)
-
-}
+    return this.HttpClient.post(this.apiUrl + 'criaLivro', form)
+  }
   constructor(public HttpClient: HttpClient) { }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-perfil',
@@ -10,7 +11,7 @@ export class ListPerfilPage implements OnInit {
 
   perfis: any[]
 
-  constructor(public AuthService: AuthService) {
+  constructor(public AuthService: AuthService, public router:Router) {
     this.listaUser();
    }
    listaUser():any{
@@ -19,7 +20,10 @@ export class ListPerfilPage implements OnInit {
 			  this.perfis = res;
 			  console.log(res)
 		})
-	}
+  }
+  voltarPaginaAnterior(){
+    this.router.navigate(['tabs/tab3']);
+  }
   ngOnInit() {
   }
 

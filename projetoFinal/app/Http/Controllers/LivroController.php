@@ -19,17 +19,15 @@ class LivroController extends Controller
         $livro->preco = $request->preco;
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
-        if($request->photo){
-            if (!Storage::exists('livroPhotos/')){
-            Storage::makeDirectory('livroPhotos/',0775,true);
-        }
-        $file=$request->file('photo');
-        $filename = $livro->id. "." .$file->getClientOriginalExtension();
-        $path = $file->storeAs('livroPhotos', $filename);
-        $livro->photo = $path;
-        }
+               
+        if($request->photo) {
+            $file = $request->file('photo');
+            $filename = 'livro_'. uniqid(). '.' .$file->getClientOriginalExtension();
+            $path = $file->storeAs('public',$filename);
+            $livro->photo = 'http://localhost:8000/storage/'.$filename;
+        } 
         $livro->save();
-        return response()->json([$livro]);
+        return response()->json($livro);
     }
     
     public function listLivro(){

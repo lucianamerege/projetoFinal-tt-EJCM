@@ -60,6 +60,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'livro/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./livro/livro.module').then(m => m.LivroPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab2',
         pathMatch: 'full'

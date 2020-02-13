@@ -3,74 +3,54 @@
 
         <ion-row>
             <ion-col size="4" class="foto">
-                <div></div>
+                <div (click)="file.click()"> <!-- ao clicar abre o input -->
+                    <input type="file" accept="*/image" (change)="downloadPhoto(file.files)" style="display: none" #file/> <!-- INPUT (invisível) QUE PEGA O FILE -->
+                    <img *ngIf="livroObj.photo" src="{{livroObj.photo}}"/> 
+                    <img *ngIf="!livroObj.photo" src="../../../assets/ler.jpg"/> 
+                </div>
+                <p>Clique para Alterar</p>
             </ion-col>
 
             <ion-col>
-                <ion-item [class.invalid]="ofertaForm.controls.titulo.invalid && ofertaForm.controls.titulo.touched">
+                <ion-item>
                     <ion-label position="floating">Título</ion-label>
-                    <ion-input class="input" type="text" formControlName="titulo"></ion-input>
+                    <ion-input class="input" type="text" formControlName="name"></ion-input>
                 </ion-item>
 
-                <ion-item [class.invalid]="ofertaForm.controls.autor.invalid && ofertaForm.controls.autor.touched">
+                <ion-item>
                     <ion-label position="floating">Autor</ion-label>
                     <ion-input class="input" type="text" formControlName="autor"></ion-input>
                 </ion-item>
 
-                <ion-item [class.invalid]="ofertaForm.controls.estado.invalid && ofertaForm.controls.estado.touched">
+                <ion-item>
                     <ion-label position="floating">Estado do livro</ion-label>
                     <ion-input class="input" type="text" formControlName="estado"></ion-input>
                 </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
-            <ion-col class="icon">
-                <ion-icon name="camera"></ion-icon>
-                <ion-icon name="image"></ion-icon>
-            </ion-col>
+            <ion-col></ion-col>
             <ion-col size="8">
-                <ion-item [class.invalid]="ofertaForm.controls.preco.invalid && ofertaForm.controls.preco.touched">
-                    <ion-label position="floating">Preço</ion-label>
-                    <ion-input class="input" maxLength="10" type="number" formControlName="preco"></ion-input>
+                <ion-item>
+                    <ion-label position="floating">Preço: R$</ion-label>
+                    <ion-input class="input" type="number" formControlName="preco"></ion-input>
                 </ion-item>
             </ion-col>
         </ion-row>
 
 
-        <ion-item [class.invalid]="ofertaForm.controls.sinopse.invalid && ofertaForm.controls.sinopse.touched">
+        <ion-item>
             <ion-label position="floating">Sinopse</ion-label>
-            <ion-input class="input" maxLength="300" type="text" formControlName="sinopse"></ion-input>
+            <ion-input class="input" type="text" formControlName="resumo"></ion-input>
         </ion-item>
 
-        <ion-item [class.invalid]="ofertaForm.controls.info.invalid && ofertaForm.controls.info.touched">
+        <ion-item>
             <ion-label position="floating">Informações da edição</ion-label>
-            <ion-input class="input" maxLength="100" type="text" formControlName="info"></ion-input>
+            <ion-input class="input" type="text"></ion-input>
         </ion-item>
-
-        <ion-list>
-            <ion-radio-group>
-                <ion-list-header>
-                    <ion-label>Você está vendendo:</ion-label>
-                </ion-list-header>
-                <ion-row>
-                    <ion-col>
-                        <ion-item>
-                            <ion-label>Unidade</ion-label>
-                            <ion-radio value="unidade"></ion-radio>
-                        </ion-item>
-                    </ion-col>
-                    <ion-col>
-                        <ion-item>
-                            <ion-label>Coleção</ion-label>
-                            <ion-radio value="colecao"></ion-radio>
-                        </ion-item>
-                    </ion-col>
-                </ion-row>
-            </ion-radio-group>
-        </ion-list>
         <ion-item>
             <ion-label>Gêneros</ion-label>
-            <ion-select multiple="true" cancelText="Cancelar" okText="Salvar">
+            <ion-select cancelText="Cancelar" okText="Salvar" formControlName="genero">
                 <ion-select-option value="terror">Terror</ion-select-option>
                 <ion-select-option value="comédia">Comédia</ion-select-option>
                 <ion-select-option value="aventura">Aventura</ion-select-option>
@@ -85,7 +65,7 @@
         </ion-item>
 
         <ion-row class="alinhar">
-            <ion-button class="botao">Pronto</ion-button>
+            <ion-button type="submit" class="botao" [disabled]="ofertaForm.invalid">Pronto</ion-button>
             <ion-button class="botao" (click)="voltaPraHome()">Cancelar</ion-button>
         </ion-row>
 
