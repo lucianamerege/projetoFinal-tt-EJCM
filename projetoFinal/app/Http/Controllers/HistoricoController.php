@@ -15,7 +15,8 @@ class HistoricoController extends Controller
         $historico->name = $request->name;
         $historico->genero = $request->genero;
         $historico->autor = $request->autor;
-        $historico->data = $request->data;
+        $historico->user_id = $request->user_id;
+        //$historico->data = $request->data;
         $historico->save();
     
         return response()->json([$historico]);
@@ -44,9 +45,9 @@ class HistoricoController extends Controller
             if($request->autor){
                 $historico->autor = $request->autor;
             }
-            if($request->data){
-                $historico->data = $request->data;
-            }
+          //  if($request->data){
+           //     $historico->data = $request->data;
+           // }
             $historico->save();
             return response()->json([$historico]);
         }

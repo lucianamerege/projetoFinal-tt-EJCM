@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Storage;
 use App\Livro;
 use App\Historico;
 use App\User;
+use Auth;
 
 class LivroController extends Controller
 {
     public function createLivro(Request $request){
+        $user = Auth::user();
         $livro = new Livro;
 
         $livro->name = $request->name;
@@ -19,7 +21,7 @@ class LivroController extends Controller
         $livro->preco = $request->preco;
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
-               
+        
         if($request->photo) {
             $file = $request->file('photo');
             $filename = 'livro_'. uniqid(). '.' .$file->getClientOriginalExtension();
@@ -29,20 +31,20 @@ class LivroController extends Controller
         $livro->save();
         return response()->json($livro);
     }
-    
+
     public function listLivro(){
         $livro = Livro::all();
         return response()->json($livro);
     }
-    
+
     public function showLivro($id){
         $livro = Livro::findOrFail($id);
         return response()->json([$livro]);
     }
-    
+
     public function updateLivro(Request $request, $id){
         $livro = Livro::find($id);
-        
+
         if($livro){
             if($request->name){
                 $livro->name = $request->name;
@@ -62,6 +64,9 @@ class LivroController extends Controller
             if($request->estado){
                 $livro->estado = $request->estado;
             }
+            if($request->info){
+                $livro->info = $request->info;
+            }
             $livro->save();
             return response()->json([$livro]);
         }
@@ -69,7 +74,7 @@ class LivroController extends Controller
             return response()->json(['Este livro não existe']);
         }
     }
-    
+
     public function deleteLivro($id){
         $livro = Livro::findOrFail($id);
         Storage::delete($livro->photo);
@@ -78,9 +83,20 @@ class LivroController extends Controller
     }
 
     public function showPhoto($id){        //Essa função mostra a foto do livro para o usuário pelo front
-        $user = Livro::findOrFail($id);      //permitindo o download caso queira     
-        return Storage::download($livro->photo);  
+        $user = Livro::findOrFail($id);      //permitindo o download caso queira
+        return Storage::download($livro->photo);
 
     }
+
+    public function mostraOferta($id){
+        $user = User::findOrFail($id);
+        $livros = $user->livros()->where('vendedor_id', $user->id)->where('status', 1)->get();
+        return response()->json([$livros]);
+    }
+
+
+
+
+
 
 }

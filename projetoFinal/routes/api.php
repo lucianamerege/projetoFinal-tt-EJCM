@@ -18,39 +18,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // ROTAS PARA USER
-Route::get('listaUser', 'UserController@listUser'); //rota para listar um user
-Route::get('mostraUser/{id}', 'UserController@showUser');//rota para mostrar um user específico
-Route::post('criaUser', 'UserController@createUser');//rota para criar um user
-Route::put('atualizaUser/{id}', 'UserController@updateUser');//rota para atualizar um user específico
-Route::delete('deletaUser/{id}', 'UserController@deleteUser');//rota para deletar um user específico
+Route::get('listaUser', 'UserController@listUser'); //listar um user
+Route::get('mostraUser/{id}', 'UserController@showUser');// mostrar um user específico
+
+
 
 //ROTAS PARA LIVROS
-Route::get('listaLivro', 'LivroController@listLivro');//rota para listar uma livro
-Route::get('mostraLivro/{id}', 'LivroController@showLivro');//rota para mostrar uma livro específica
-Route::post('criaLivro', 'LivroController@createLivro');//rota para criar uma livro
-Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//rota para atualizar uma livro específica
-Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//rota para deletar uma livro específica
+Route::get('listaLivro', 'LivroController@listLivro');//listar uma livro
+Route::get('mostraLivro/{id}', 'LivroController@showLivro');//rota para mostrar uma livro específico
+Route::get('mostraOferta/{id}', 'LivroController@mostraOferta');//rota para mostrar uma livro específico
 
 // ROTAS PARA COMENTÁRIOS
-Route::get('listaComentario', 'ComentarioController@listComentario'); //rota para listar um Comentario
-Route::get('mostraComentario/{id}', 'ComentarioController@showComentario');//rota para mostrar um Comentario específico
-Route::post('criaComentario', 'ComentarioController@createComentario');//rota para criar um Comentario
-Route::put('atualizaComentario/{id}', 'ComentarioController@updateComentario');//rota para atualizar um Comentario específico
-Route::delete('deletaComentario/{id}', 'ComentarioController@deleteComentario');//rota para deletar um Comentario específico
+Route::get('listaComentario', 'ComentarioController@listComentario'); //listar um Comentario
+Route::get('mostraComentario/{id}', 'ComentarioController@showComentario');//mostrar um Comentario específico
+Route::post('criaComentario', 'ComentarioController@createComentario');//criar um Comentario
+Route::put('atualizaComentario/{id}', 'ComentarioController@updateComentario');//atualizar um Comentario específico
+Route::delete('deletaComentario/{id}', 'ComentarioController@deleteComentario');//deletar um Comentario específico
 
 // ROTAS PARA HISTÓRICO
-Route::get('listaHistorico', 'HistoricoController@listHistorico'); //rota para listar um Historico
-Route::get('mostraHistorico/{id}', 'HistoricoController@showHistorico');//rota para mostrar um Historico específico
-Route::post('criaHistorico', 'HistoricoController@createHistorico');//rota para criar um Historico
-Route::put('atualizaHistorico/{id}', 'HistoricoController@updateHistorico');//rota para atualizar um Historico específico
-Route::delete('deletaHistorico/{id}', 'HistoricoController@deleteHistorico');//rota para deletar um Historico específico
+Route::get('listaHistorico', 'HistoricoController@listHistorico'); // listar um Historico
+Route::get('mostraHistorico/{id}', 'HistoricoController@showHistorico');//mostrar um Historico específico
+Route::post('criaHistorico', 'HistoricoController@createHistorico');//para criar um Historico
+Route::put('atualizaHistorico/{id}', 'HistoricoController@updateHistorico');//atualizar um Historico específico
+Route::delete('deletaHistorico/{id}', 'HistoricoController@deleteHistorico');//deletar um Historico específico
 
 // ROTAS PARA GENERO DE LIVROS
-Route::get('listaGenero', 'HistoricoController@listGenero'); //rota para listar um Genero
-Route::get('mostraGenero/{id}', 'HistoricoController@showGenero');//rota para mostrar um Genero específico
-Route::post('criaGenero', 'HistoricoController@createGenero');//rota para criar um Genero
-Route::put('atualizaGenero/{id}', 'HistoricoController@updateGenero');//rota para atualizar um Genero específico
-Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//rota para deletar um Genero específico
+Route::get('listaGenero', 'HistoricoController@listGenero'); //listar um Genero
+Route::get('mostraGenero/{id}', 'HistoricoController@showGenero');//mostrar um Genero específico
+Route::post('criaGenero', 'HistoricoController@createGenero');//criar um Genero
+Route::put('atualizaGenero/{id}', 'HistoricoController@updateGenero');//atualizar um Genero específico
+Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//deletar um Genero específico
 
 //ROTAS PARA FUNCIONALIDADES
 Route::post('register', 'API\PassportController@register');
@@ -59,8 +56,12 @@ Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::get('listHistorico/{user_id}', 'API\PassportController@listHistorico');
+    Route::get('listHistorico', 'API\PassportController@listHistorico');
     Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
+    Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
+    Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
+    Route::delete('deletaUser/{id}', 'UserController@deleteUser')->middleware('isAdmin');//admin deleta um user específico
+    Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//deletar um livro específico
 });
 
 //ROTAS PARAS AS FOTOS DO USER

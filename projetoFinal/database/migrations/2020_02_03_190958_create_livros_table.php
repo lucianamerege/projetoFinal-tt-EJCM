@@ -21,16 +21,19 @@ class CreateLivrosTable extends Migration
             $table->float('preco');
             $table->longText('resumo');
             $table->string('estado');
+            $table->string('info');
             $table->boolean('status')->default(true);
             $table->string('photo')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('vendedor_id')->nullable();
+            $table->unsignedBigInteger('comprador_id')->nullable();
             $table->timestamps();
         });
-        
-        
+
+
         //Adicionando Foreign Key
         Schema::table('livros', function (Blueprint $table){
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('vendedor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('comprador_id')->references('id')->on('users')->onDelete('cascade');
         });
 
     }
