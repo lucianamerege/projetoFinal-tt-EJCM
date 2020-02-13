@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-slide',

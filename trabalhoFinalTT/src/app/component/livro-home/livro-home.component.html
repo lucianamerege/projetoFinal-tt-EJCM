@@ -1,10 +1,10 @@
 <ion-row>
-  <ion-col size="6" *ngFor=" let livro of livros">
-    <ion-card>
-      <ion-card-header class="livro"><img src="../../assets/ler.jpg"></ion-card-header>
-      <ion-card-content>
-        <ion-card-subtitle>{{livro.name}}</ion-card-subtitle>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-</ion-row>
+    <ion-col size="6" *ngFor=" let livro of livros">
+      <ion-card [href]="'/livro/' + livro.id" >
+        <ion-card-header class="livro"><img src="../../assets/ler.jpg"></ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>{{livro?.name}}</ion-card-subtitle>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>

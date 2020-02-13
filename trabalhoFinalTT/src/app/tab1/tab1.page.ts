@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LivroService } from '../'
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -9,6 +9,8 @@ import { LivroService } from '../'
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public service: AuthService) {}
+
+  avaliacoes: any[] = [{ avatar: "", user: ""}];
 
 }

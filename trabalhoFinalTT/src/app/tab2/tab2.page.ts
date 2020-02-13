@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
-  constructor(private router: Router) {}
-
+ 
+	
+  constructor(private router: Router) {
+    
+  }
+  
   praOferta(){
     this.router.navigate(['/tabs/oferta']);
   }
@@ -21,4 +24,5 @@ export class Tab2Page {
     else
       return true;
   }
+
 }

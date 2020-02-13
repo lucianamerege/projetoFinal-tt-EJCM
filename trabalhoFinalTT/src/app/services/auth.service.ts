@@ -22,10 +22,17 @@ export class AuthService {
     return this.HttpClient.post( this.apiUrl + 'login', form, this.httpHeaders);
   }
 
+  listaUser( ): Observable<any> {
+    return this.HttpClient.get( this.apiUrl + 'listaUser', this.httpHeaders);
+  }
+
   logout(): Observable<any> {
     console.log(this.httpHeaders);
     this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
     return this.HttpClient.get( this.apiUrl + 'logout', this.httpHeaders );
   }
-  constructor(public HttpClient: HttpClient ) { }
+  registrarComentario( form ): Observable<any> {
+    return this.HttpClient.post( this.apiUrl + 'criaComentario', form, this.httpHeaders);
+  }
+  constructor(public HttpClient: HttpClient) { }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProtractorExpectedConditions } from 'protractor';
-import {AuthService} from '../../services/auth.service'
+import {LivroService} from '../../services/livro.service'
 
 @Component({
   selector: 'app-livro-home',
@@ -9,49 +9,20 @@ import {AuthService} from '../../services/auth.service'
 })
 export class LivroHomeComponent implements OnInit {
 
-  dadosLivro;
-  nomeLivro;
+  livros: any[]
   
-  constructor(public AuthService: AuthService) { 
-  
+  constructor(public LivroService: LivroService) { 
+    this.ListaLivro();
   }
 
   ngOnInit() {}
 
-  name:string;
+  ListaLivro():any{
+		this.LivroService.listaLivro().subscribe(
+      (res) => {
+			  this.livros = res;
+			  console.log(res)
+		})
+	}
 
-  livros:object[] = [
-    {
-      name: "Harry Potter",
-    },
-    {
-      name: "Mágico de Oz"
-    },
-    {
-      name: "Alice"
-    },
-    {
-      name: "Dom Quixote"
-    },
-    {
-      name: "Orfanato da senhorita Peregrine para Crianças Peculiares"
-    },
-    {
-      name: "O Castelo das Águias"
-    },
-    {
-      name: "Box O Senhor dos Anéis"
-    },
-
-  ]
-
-  //getInfo(id){
-   // this.AuthService.getLivro(id).subscribe(
-   //   (res) => {
-    //    this.dadosLivro=res;
-    //    console.log(this.dadosLivro);
-  //      this.nomeLivro=this.dadosLivro.nomeLivro;
-  //    }
- //   )
- // };
 }

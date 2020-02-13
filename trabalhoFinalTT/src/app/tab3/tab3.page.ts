@@ -28,5 +28,8 @@ export class Tab3Page {
   historico() {
     this.router.navigate(['/historico']);
   }
+  listaPerfil() {
+    this.router.navigate(['/list-perfil']);
+  }
 
 }

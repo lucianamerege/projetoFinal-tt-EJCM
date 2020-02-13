@@ -1,18 +1,18 @@
-<ion-card>
+<ion-card *ngFor=" let livro of livros">
     <ion-row>
       <ion-col size="4">
         <img src="../../assets/ler.jpg">
       </ion-col>
       <ion-col size="8">
-        <ion-card-title> O Fabuloso Livro Azul </ion-card-title>
-        <ion-card-subtitle> Andrew Lang </ion-card-subtitle>
+        <ion-card-title> {{livro?.name}} </ion-card-title>
+        <ion-card-subtitle>{{livro?.autor}}</ion-card-subtitle>
         <ion-card-content>
-          <p>Vendedor: Carlos</p>
+          <p>Vendedor: </p>
           <p>Compra: 01/02/2020</p>
           <p>Tipo: Unidade</p>
-          <p>Preço: R$17,00</p>
+          <p>{{livro?.preco}}</p>
         </ion-card-content>
-        <ion-button>Avaliar</ion-button>
+        <ion-button type="button" class="botao" (click)="avaliar()">Avaliar</ion-button>
       </ion-col>
     </ion-row>
 </ion-card>

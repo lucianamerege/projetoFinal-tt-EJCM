@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-card>
+    <ion-row>
+      <ion-col size="3">
+        
+      </ion-col>
+      <ion-col size="3">
+        <img src="../../assets/ler.jpg">
+      </ion-col>
+      <ion-col size="6">
+        <ion-card-title> O Fabuloso Livro Azul </ion-card-title>
+        <ion-card-subtitle> Andrew Lang </ion-card-subtitle>
+        <ion-card-content>
+          <p>Vendedor: Carlos</p>
+          <p>Preço: R$17,00</p>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-row>
+    <ion-col size="2"></ion-col>
+    <ion-col size="8">
+      <p>Deixe sua avaliação</p>
+      <form [formGroup]="registerForm" (ngSubmit)="registrarComentario( registerForm )">
+        <ion-item class="inputs">
+          <ion-textarea formControlName="text"></ion-textarea>
+        </ion-item>
+        <ion-button class="botao" type="submit"shape="round" mode="ios">Postar</ion-button>
+        <ion-button class="botao" type="button"shape="round" mode="ios" (click)="voltarPaginaAnterior()">Cancelar</ion-button>
+      </form>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+
+</ion-content>

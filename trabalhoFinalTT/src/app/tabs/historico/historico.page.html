@@ -1,6 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>historico</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="esquerda" (click)="voltarPaginaAnterior()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col class="titulo">
+          <ion-title>
+            Histórico
+          </ion-title>
+        </ion-col>
+        <ion-col class="vazia"></ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
