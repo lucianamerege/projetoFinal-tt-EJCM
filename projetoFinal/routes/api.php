@@ -26,9 +26,7 @@ Route::get('mostraUser/{id}', 'UserController@showUser');// mostrar um user espe
 //ROTAS PARA LIVROS
 Route::get('listaLivro', 'LivroController@listLivro');//listar uma livro
 Route::get('mostraLivro/{id}', 'LivroController@showLivro');//rota para mostrar uma livro específico
-Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
-Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
-Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//deletar um livro específico
+Route::get('mostraOferta/{id}', 'LivroController@mostraOferta');//rota para mostrar uma livro específico
 
 // ROTAS PARA COMENTÁRIOS
 Route::get('listaComentario', 'ComentarioController@listComentario'); //listar um Comentario
@@ -58,9 +56,12 @@ Route::post('login', 'API\PassportController@login');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::get('listHistorico/{user_id}', 'API\PassportController@listHistorico');
+    Route::get('listHistorico', 'API\PassportController@listHistorico');
     Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
+    Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
+    Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
     Route::delete('deletaUser/{id}', 'UserController@deleteUser')->middleware('isAdmin');//admin deleta um user específico
+    Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//deletar um livro específico
 });
 
 //ROTAS PARAS AS FOTOS DO USER

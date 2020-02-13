@@ -68,12 +68,12 @@ class PassportController extends Controller
     public function compraLivro($livro_id){
         $user = Auth::user();
         $livro = Livro::findOrFail($livro_id);
-        // if ($livro->status == false) {
-        //   return response()->json(['Este livro não está a venda']);
-        // }
-        //else{
+         if ($livro->status == false) {
+           return response()->json(['Este livro não está a venda']);
+        }
+        else{
         $livro->status = false;
-        $livro->user_id = $user->id;
+        $livro->comprador_id = $user->id;
         $livro->save();
         $historico = new Historico;
         $historico->createHistorico($livro);
@@ -81,12 +81,12 @@ class PassportController extends Controller
         $user->notify(new Compra($user));
         return response()->json(['Compra Efetuada']);
         }
-    //}
+    }
 
 
-    public function listHistorico($user_id) {
+    public function listHistorico() {
            $user = Auth::user();
-           $user = User::with('livros')->find($user_id, 'id');
-           return $user;
+           $livro = Historico::all()->where('user_id',$user->id);
+           return $livro;
        }
 }
