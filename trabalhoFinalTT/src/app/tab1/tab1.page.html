@@ -1,20 +1,11 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Perfil
-        </ion-title>
-    </ion-toolbar>
-
-</ion-header>
-
 <ion-content>
-    <img class="perfil" src="assets/teste.jpg" alt="perfil" width="100" height="100" />
+    <img class="perfil" src="assets/perfil.jpg" alt="perfil" width="100" height="100" />
     <ion-card-title class="alinhar">malu</ion-card-title>
-    <div class="espaco">Suas ofertas:</div>
+    <div class="espaco">Ofertas:</div>
     <app-slide *ngFor="let slide of slide" [slideInfo]="slide" (slideClicked="goToLivro($event)")></app-slide>
-    <div class="espaco">Suas avaliações:</div>
-    <app-avaliacao *ngFor="let avaliacao of avaliacao" [avaliacao]="avaliacao"></app-avaliacao>
-
+    <div class="espaco">Avaliações:</div>
+    <app-avaliacao [avaliacoes]="avaliacoes"></app-avaliacao>
+    
 
 
 

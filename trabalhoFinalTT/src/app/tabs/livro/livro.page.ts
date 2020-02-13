@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LivroService } from '../../services/livro.service';
 
 @Component({
   selector: 'app-livro',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivroPage implements OnInit {
 
-  constructor() { }
+  constructor(public route: ActivatedRoute, public LivroService: LivroService) { }
 
   ngOnInit() {
   }

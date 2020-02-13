@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
-import { SlideComponent } from '../component/slide.component';
-import { AvaliacaoComponent } from '../component/avaliacao.component';
+import { SlideComponent } from '../component/slide/slide.component';
+import { AvaliacaoComponent } from '../component/avaliacao/avaliacao.component';
 
 @NgModule({
   imports: [

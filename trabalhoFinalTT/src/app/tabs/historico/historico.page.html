@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>historico</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="esquerda" (click)="voltarPaginaAnterior()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col class="titulo">
+          <ion-title>
+            Histórico
+          </ion-title>
+        </ion-col>
+        <ion-col class="vazia"></ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-livro-historico></app-livro-historico>
+  <ion-card *ngFor=" let livro of livros">
+    <ion-row>
+      <ion-col size="4">
+        <img src="../../assets/ler.jpg">
+      </ion-col>
+      <ion-col size="8">
+        <ion-card-title> {{livro?.name}} </ion-card-title>
+        <ion-card-subtitle>{{livro?.autor}}</ion-card-subtitle>
+        <ion-card-content>
+          <p>Vendedor: </p>
+          <p>Compra: 01/02/2020</p>
+          <p>Tipo: Unidade</p>
+          <p>{{livro?.preco}}</p>
+        </ion-card-content>
+        <ion-button type="button" class="botao" (click)="avaliar()">Avaliar</ion-button>
+        <form [hidden]="isActive()" [formGroup]="registerForm" (ngSubmit)="registrarComentario( registerForm )">
+          <ion-item class="inputs">
+            <ion-textarea formControlName="text"></ion-textarea>
+          </ion-item>
+          <ion-button class="botao" type="submit"shape="round" mode="ios">Postar</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+</ion-card>
 </ion-content>
