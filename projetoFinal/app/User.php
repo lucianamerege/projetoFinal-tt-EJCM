@@ -38,18 +38,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     //Adicionando One-to-Many com comentario
     public function comentarios(){
         return $this->hasMany('App\Comentario',"user_id");
-        
+
     }
     public function livros(){
-        return $this->hasMany('App\Livro',"livro_id");
+        return $this->hasMany('App\Livro',"user_id");
     }
 
     public function historico(){
-        return $this->hasOne('App\Historico',"historico_id");
+        return $this->hasOne('App\Historico',"id");
+    }
+
+    public function genero(){
+        return $this->hasMany('App\Genero',"id");
     }
 
 
