@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'oferta',
+    path: 'oferta/:id',
     loadChildren: () => import('./tabs/oferta/oferta.module').then( m => m.OfertaPageModule)
   },
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./tab3/tab3.module').then( m => m.Tab3PageModule), canActivate: [PrecisaEstarLogadoGuard]
+  },
+  {
+    path: 'livro',
+    loadChildren: () => import('./tabs/livro/livro.module').then( m => m.LivroPageModule)
   },
 ];
 @NgModule({
