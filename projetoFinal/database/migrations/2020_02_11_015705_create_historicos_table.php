@@ -18,7 +18,7 @@ class CreateHistoricosTable extends Migration
             $table->string('name');
             $table->string('genero');
             $table->string('autor');
-            $table->integer('data');
+            $table->integer('data')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

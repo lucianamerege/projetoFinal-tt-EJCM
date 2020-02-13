@@ -19,6 +19,7 @@ class LivroController extends Controller
         $livro->preco = $request->preco;
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
+        $livro->info = $request->info;
         if($request->photo){
             if (!Storage::exists('livroPhotos/')){
             Storage::makeDirectory('livroPhotos/',0775,true);
@@ -63,6 +64,9 @@ class LivroController extends Controller
             }
             if($request->estado){
                 $livro->estado = $request->estado;
+            }
+            if($request->info){
+                $livro->info = $request->info;
             }
             $livro->save();
             return response()->json([$livro]);

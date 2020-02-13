@@ -11,6 +11,7 @@ use App\User;
 use App\Livro;
 use App\Historico;
 use App\Notifications\Compra;
+use Carbon\Carbon;
 
 class PassportController extends Controller
 {
@@ -32,9 +33,11 @@ class PassportController extends Controller
         $newUser->password = bcrypt($request->password);
         $newUser->isAdmin = $request->isAdmin;
 
-        $success['token'] = $newUser->createToken('MyApp')->accessToken;
-        $success['name'] = $newUser->name;
-
+        $success['Token'] = $newUser->createToken('MyApp')->accessToken;
+        $success['Name'] = $newUser->name;
+        $current = Carbon::now('America/Sao_Paulo');
+        $success['Data'] = $current->format('d-m-Y');
+        $success['Horário'] = $current->format('h:m:s');
         $newUser->save();
         return response()->json(['success' => $success], $this->successStatus);
     }
@@ -65,21 +68,24 @@ class PassportController extends Controller
     public function compraLivro($livro_id){
         $user = Auth::user();
         $livro = Livro::findOrFail($livro_id);
-        if ($livro->status == false) {
-          return response()->json(['Este livro não existe']);
-        }
-        else{
+        // if ($livro->status == false) {
+        //   return response()->json(['Este livro não está a venda']);
+        // }
+        //else{
         $livro->status = false;
         $livro->user_id = $user->id;
         $livro->save();
+        $historico = new Historico;
+        $historico->createHistorico($livro);
+        $historico->save();
         $user->notify(new Compra($user));
         return response()->json(['Compra Efetuada']);
         }
-    }
+    //}
 
 
     public function listHistorico($user_id) {
-
+           $user = Auth::user();
            $user = User::with('livros')->find($user_id, 'id');
            return $user;
        }

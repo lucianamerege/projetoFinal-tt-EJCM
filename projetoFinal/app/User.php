@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
 
     public function genero(){
-        return $this->hasMany('App\Genero',"id");
+        return $this->hasMany('App\Genero',"id");  // N-N com o Gênero
     }
 
 

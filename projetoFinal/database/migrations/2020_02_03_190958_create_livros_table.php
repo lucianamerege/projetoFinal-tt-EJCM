@@ -21,6 +21,7 @@ class CreateLivrosTable extends Migration
             $table->float('preco');
             $table->longText('resumo');
             $table->string('estado');
+            $table->string('info');
             $table->boolean('status')->default(true);
             $table->string('photo')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
