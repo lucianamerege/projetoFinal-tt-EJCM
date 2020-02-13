@@ -15,6 +15,11 @@ export class LivroService {
       'Accept': 'application/json'
     }
   }
+  httpHeadersDois: any = {
+    headers: {
+      'Authorization': 'Bearer '+ localStorage.getItem('userToken')
+    }
+  }
   listaLivro( ): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'listaLivro', this.httpHeaders);
   }
@@ -22,7 +27,7 @@ export class LivroService {
     return this.HttpClient.get( this.apiUrl + 'mostraLivro/' + id , this.httpHeaders);
   }
   criaLivro(form): Observable<any> {
-    return this.HttpClient.post(this.apiUrl + 'criaLivro', form)
+    return this.HttpClient.post(this.apiUrl + 'criaLivro', form, this.httpHeadersDois); 
   }
   constructor(public HttpClient: HttpClient) { }
 }

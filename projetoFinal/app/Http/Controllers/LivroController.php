@@ -21,6 +21,7 @@ class LivroController extends Controller
         $livro->preco = $request->preco;
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
+        $livro->info = $request->info;
         
         if($request->photo) {
             $file = $request->file('photo');

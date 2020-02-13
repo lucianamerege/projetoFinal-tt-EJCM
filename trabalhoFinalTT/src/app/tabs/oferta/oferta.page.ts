@@ -25,6 +25,7 @@ export class OfertaPage implements OnInit {
       preco: [null, [Validators.required, Validators.maxLength(10)]],
       genero: [null, [Validators.required]],
       resumo: [null, [Validators.required, Validators.maxLength(200)]],
+      info: [null, [Validators.required, Validators.maxLength(200)]]
     });
   }
   ngOnInit(){}
@@ -43,6 +44,7 @@ export class OfertaPage implements OnInit {
       formData.append("preco", ofertaForm.value.preco);
       formData.append("genero", ofertaForm.value.genero);
       formData.append("resumo", ofertaForm.value.resumo);
+      formData.append("info", ofertaForm.value.info);
       if(this.photoFile) formData.append("photo", this.photoFile); // Coloca o arquivo da foto no FormData, se existir
       
       this.livroService.criaLivro(formData).subscribe(

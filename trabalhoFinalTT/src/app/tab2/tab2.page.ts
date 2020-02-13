@@ -14,8 +14,8 @@ export class Tab2Page  {
     
   }
 
-  praOferta(id){
-    this.router.navigate(['/tabs/oferta', id]);
+  praOferta(){
+    this.router.navigate(['/tabs/oferta']);
   }
   isActive(): boolean{
 
