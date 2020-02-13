@@ -9,7 +9,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class Tab1Page {
 
-  constructor(public service: AuthService) {}
+  constructor(public service: AuthService) {
+    
+  }
 
   avaliacoes: any[] = [{ avatar: "", user: ""}];
 
