@@ -13,9 +13,9 @@ export class Tab2Page  {
   constructor(private router: Router, public LivroService:LivroService) {
     
   }
-  
-  praOferta(){
-    this.router.navigate(['/tabs/oferta']);
+
+  praOferta(id){
+    this.router.navigate(['/tabs/oferta', id]);
   }
   isActive(): boolean{
 

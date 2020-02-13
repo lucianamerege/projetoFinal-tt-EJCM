@@ -4,32 +4,35 @@ import { Location } from "@angular/common";
 import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+    selector: 'app-tab3',
+    templateUrl: 'tab3.page.html',
+    styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
 
-  constructor(private router: Router, private location: Location, public authService: AuthService) {}
+    constructor(private router: Router, private location: Location, public authService: AuthService) { }
 
-  voltarPaginaAnterior(){
-    this.location.back();
-  }
+    voltarPaginaAnterior() {
+        this.location.back();
+    }
 
-  logout() {
-    this.authService.logout().subscribe(
-      (res) => {
-        console.log( 'Logout realizado' );
-        localStorage.removeItem('userToken');
-        this.router.navigate(['/tabs/tab1']);
-      }
-    );
-  }
-  historico() {
-    this.router.navigate(['/historico']);
-  }
-  listaPerfil() {
-    this.router.navigate(['/list-perfil']);
-  }
+    logout() {
+        this.authService.logout().subscribe(
+            (res) => {
+                console.log('Logout realizado');
+                localStorage.removeItem('userToken');
+                this.router.navigate(['/tabs/tab1']);
+            }
+        );
+    }
+    historico() {
+        this.router.navigate(['/historico']);
+    }
+    listaPerfil() {
+        this.router.navigate(['/list-perfil']);
+    };
+    clicaPerfil(id) {
+        this.router.navigate(['/', id])
+    };
 
 }

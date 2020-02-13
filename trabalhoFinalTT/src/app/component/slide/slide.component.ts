@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slide',
@@ -9,12 +10,15 @@ export class SlideComponent implements OnInit {
     @Input() slideInfo;
    /*@Output()slideClicked = new EventEmitter<number>();*/
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
       console.log(this.slideInfo);
+
   }
 
-
+  clicaSlide(id) {
+      this.router.navigate(['/livro', id])
+  };
 
 }

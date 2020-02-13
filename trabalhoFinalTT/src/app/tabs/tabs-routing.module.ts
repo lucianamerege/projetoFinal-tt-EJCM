@@ -40,6 +40,17 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'livro/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./livro/livro.module').then(m => m.LivroPageModule),
+          }
+        ]
+      },
+
+      {
         path: 'oferta',
         children: [
           {
@@ -80,10 +91,6 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/tab2',
     pathMatch: 'full'
-  },
-  {
-    path: 'historico',
-    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
   },
   {
     path: 'historico',

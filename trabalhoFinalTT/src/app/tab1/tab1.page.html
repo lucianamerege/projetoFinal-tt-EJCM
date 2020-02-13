@@ -1,9 +1,9 @@
 <ion-content>
     <img class="perfil" src="assets/perfil.jpg" alt="perfil" width="100" height="100" />
-    <ion-card-title class="alinhar">malu</ion-card-title>
+    <ion-card-title class="alinhar"></ion-card-title>
     <div class="espaco">Ofertas:</div>
     <app-slide *ngFor="let slide of slide" [slideInfo]="slide" (slideClicked="goToLivro($event)")></app-slide>
     <div class="espaco">Avaliações:</div>
     <app-avaliacao [avaliacoes]="avaliacoes"></app-avaliacao>
-    
+
 </ion-content>
