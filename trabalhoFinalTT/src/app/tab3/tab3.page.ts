@@ -34,5 +34,8 @@ export class Tab3Page {
     clicaPerfil(id) {
         this.router.navigate(['/', id])
     };
+    generos() {
+        this.router.navigate(['/generos']);
+    };
 
 }

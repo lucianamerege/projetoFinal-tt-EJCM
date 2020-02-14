@@ -13,7 +13,7 @@ export class LivroHomeComponent implements OnInit {
   livros: any[]
   
   constructor(public router: Router, public LivroService: LivroService) { 
-    this.ListaLivro();
+    this.ListaLivroTrue();
   }
 
   ngOnInit() {
@@ -25,12 +25,12 @@ export class LivroHomeComponent implements OnInit {
     this.router.navigate(['/tabs/livro/' + id]);
   }
 
-  ListaLivro():any{
+  ListaLivroTrue():any{
 
-		this.LivroService.listaLivro().subscribe(
+		this.LivroService.listaLivroTrue().subscribe(
       (res) => {
-			  this.livros = res;
-			  console.log(res)
+        this.livros = res;
+			  console.log("resposta livros", res)
 		})
 	}
 

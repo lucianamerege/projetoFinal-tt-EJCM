@@ -44,11 +44,11 @@ Route::put('atualizaHistorico/{id}', 'HistoricoController@updateHistorico');//at
 Route::delete('deletaHistorico/{id}', 'HistoricoController@deleteHistorico');//deletar um Historico específico
 
 // ROTAS PARA GENERO DE LIVROS
-Route::get('listaGenero', 'HistoricoController@listGenero'); //listar um Genero
-Route::get('mostraGenero/{id}', 'HistoricoController@showGenero');//mostrar um Genero específico
-Route::post('criaGenero', 'HistoricoController@createGenero');//criar um Genero
-Route::put('atualizaGenero/{id}', 'HistoricoController@updateGenero');//atualizar um Genero específico
-Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//deletar um Genero específico
+Route::get('listaGenero', 'GeneroController@listGenero'); //listar um Genero
+Route::get('mostraGenero/{id}', 'GeneroController@showGenero');//mostrar um Genero específico
+Route::post('criaGenero', 'GeneroController@createGenero');//criar um Genero
+Route::put('atualizaGenero/{id}', 'GeneroController@updateGenero');//atualizar um Genero específico
+Route::delete('deletaGenero/{id}', 'GeneroController@deleteGenero');//deletar um Genero específico
 
 //ROTAS PARA FUNCIONALIDADES
 Route::post('register', 'API\PassportController@register');   //funcoes como essa que nao tem como ordernar

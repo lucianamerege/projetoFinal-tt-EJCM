@@ -19,7 +19,8 @@
       <ion-label position="floating">Confirme sua senha</ion-label>
       <ion-input type="password" formControlName="passwordConfirm"></ion-input>
     </ion-item>
-    <ion-button type="submit"shape="round" mode="ios" [disabled]="registerForm.invalid">Cadastrar-se</ion-button>
+    <ion-button type="submit"shape="round" mode="ios" [disabled]="registerForm.invalid" (click)="presentToast()">Cadastrar-se</ion-button>
+    <ion-button type="button"shape="round" mode="ios" (click)="login()">Login</ion-button>
   </form>
 </div>
 </ion-content>

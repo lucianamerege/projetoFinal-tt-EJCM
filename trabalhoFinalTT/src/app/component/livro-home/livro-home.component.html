@@ -1,5 +1,5 @@
 <ion-row>
-    <ion-col size="6" *ngFor=" let livro of livros">
+    <ion-col size="6" *ngFor="let livro of livros">
       <ion-card (click)="navegar(livro.id)">
         <img *ngIf="livro.photo" class="livro" src="{{livro.photo}}"/> 
         <img *ngIf="!livro.photo" class="livro" src="../../../assets/ler.jpg"/>

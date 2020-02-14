@@ -23,7 +23,7 @@
     <ion-row>
         <ion-col>{{livro?.info}}</ion-col>
         <ion-col>
-            <ion-button class="botao" (click)="compraLivro(livro?.id)">Comprar</ion-button>
+            <ion-button class="botao" (click)="presentToast()"(click)="compraLivro(livro?.id)">Comprar</ion-button>
         </ion-col>
     </ion-row>
 

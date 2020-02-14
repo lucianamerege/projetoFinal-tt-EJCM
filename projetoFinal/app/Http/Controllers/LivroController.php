@@ -34,7 +34,7 @@ class LivroController extends Controller
     }
 
     public function listLivroTrue(){
-        $livro = Livro::all()->where('status',true);
+        $livro = Livro::where('status',true)->get();
         return $livro;
         return response()->json($livro);
     }

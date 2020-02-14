@@ -87,7 +87,7 @@ class PassportController extends Controller
 
     public function listHistorico() {
            $user = Auth::user();
-           $livro = Historico::all()->where('user_id',$user->id);
+           $livro = Historico::where('user_id',$user->id)->get();
            return $livro;
        }
 }

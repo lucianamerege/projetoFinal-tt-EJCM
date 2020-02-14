@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LivroService } from '../../services/livro.service';
+import { ToastController } from '@ionic/angular'
 
 @Component({
   selector: 'app-livro',
@@ -11,7 +12,7 @@ export class LivroPage implements OnInit {
   livroId;
   livro;
 
-  constructor(public Router: Router, public route: ActivatedRoute, public LivroService: LivroService) {
+  constructor(public ToastController: ToastController, public Router: Router, public route: ActivatedRoute, public LivroService: LivroService) {
     this.livroId = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.livroId);
     this.showLivro(this.livroId);
@@ -32,7 +33,14 @@ export class LivroPage implements OnInit {
         return this.Router.navigate(['historico']);
       }
     )
-	}
+  }
+  async presentToast() {
+    const toast = await this.ToastController.create({
+      message: "Livro comprado e adicionado ao seu histórico",
+      duration: 2000
+    })
+    toast.present();
+  }
   
   ngOnInit() {
     

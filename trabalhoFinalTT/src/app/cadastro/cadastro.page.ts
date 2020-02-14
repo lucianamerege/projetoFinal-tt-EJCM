@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ToastController } from '@ionic/angular'
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +13,7 @@ export class CadastroPage implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public AuthService: AuthService, public formbuilder: FormBuilder, private router: Router) {
+  constructor(public ToastController: ToastController, public AuthService: AuthService, public formbuilder: FormBuilder, private router: Router) {
     this.registerForm = this.formbuilder.group({
       name: [null, [Validators.required, Validators.minLength(8)]],
       email:[null, [Validators.required, Validators.email]],
@@ -35,6 +36,16 @@ export class CadastroPage implements OnInit {
         }
       )
     }
+  }
+  login(){
+    this.router.navigate(['/login']);
+  }
+  async presentToast() {
+    const toast = await this.ToastController.create({
+      message: "Usuário cadastrado",
+      duration: 2000
+    })
+    toast.present();
   }
 
 }

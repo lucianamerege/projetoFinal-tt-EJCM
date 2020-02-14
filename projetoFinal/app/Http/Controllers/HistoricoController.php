@@ -22,10 +22,10 @@ class HistoricoController extends Controller
         return response()->json([$historico]);
     }
 
-    public function listHistorico(){
-        $historico = Historico::all();
-        return response()->json($historico);
-    }
+    //public function listHistorico(){
+    //    $historico = Historico::all();
+    //    return response()->json($historico);
+    //}
 
     public function showHistorico($id){
         $historico = Historico::findOrFail($id);

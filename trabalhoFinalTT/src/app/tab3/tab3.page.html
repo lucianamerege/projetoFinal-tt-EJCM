@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header">
     <ion-grid>
       <ion-row>
         <ion-col class="esquerda" (click)="voltarPaginaAnterior()">
@@ -25,6 +25,10 @@
     <ion-item class="bolo" (click)="listaPerfil()">
       <ion-icon name="people"></ion-icon>
       <p class="palavra"> Outros usuários </p>
+    </ion-item>
+    <ion-item class="bolo" (click)="generos()">
+      <ion-icon name="bookmarks"></ion-icon>
+      <p class="palavra"> Gêneros favoritos </p>
     </ion-item>
     <ion-item class="bolo" (click)="logout()">
       <ion-icon name="power"></ion-icon>

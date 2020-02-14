@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'livro',
     loadChildren: () => import('./tabs/livro/livro.module').then( m => m.LivroPageModule)
   },
+  {
+    path: 'generos',
+    loadChildren: () => import('./generos/generos.module').then( m => m.GenerosPageModule)
+  },
 ];
 @NgModule({
   imports: [
