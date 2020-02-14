@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Carbon\Carbon;
 
 class Venda extends Notification
 {
@@ -44,7 +45,7 @@ class Venda extends Notification
                     ->greeting('Olá,' . $user->name . '!')
                     ->line('Seu Registro foi efetuado com sucesso!')
                     ->action('Confira o seu perfil aqui', url('http://localhost:8000/tabs/tab2'))
-                    ->line('Obrigado por escolher Liber!');
+                    ->line('Bem vindo a família Liber!');
     }
 
     /**

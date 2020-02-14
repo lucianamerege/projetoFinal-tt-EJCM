@@ -39,6 +39,7 @@ class PassportController extends Controller
         $success['Data'] = $current->format('d-m-Y');
         $success['Horário'] = $current->format('h:m:s');
         $newUser->save();
+        $user->notify(new Registro($user));
         return response()->json(['success' => $success], $this->successStatus);
     }
 
