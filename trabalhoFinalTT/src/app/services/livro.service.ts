@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LivroService {
 
@@ -19,6 +19,9 @@ export class LivroService {
     headers: {
       'Authorization': 'Bearer '+ localStorage.getItem('userToken'),
     }
+  }
+  livrosVenda() {
+    return this.HttpClient.get(this.apiUrl + 'listaLivroTrue/', this.httpHeaders);
   }
   listaLivroTrue( ): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'listaLivroTrue', this.httpHeaders);
@@ -40,6 +43,12 @@ export class LivroService {
   }
   updateGenero(form, id){
     return this.HttpClient.put( this.apiUrl + 'atualizaGenero/' + id , form, this.httpHeaders);
+  }
+  mostraOferta(id): Observable<any> {
+    return this.HttpClient.get(this.apiUrl + 'mostraOferta/' + id, this.httpHeaders);
+  }
+listaLivro(): Observable<any> {
+  return this.HttpClient.get( this.apiUrl + 'listaLivros', this.httpHeaders);
   }
 
   constructor(public HttpClient: HttpClient) { }

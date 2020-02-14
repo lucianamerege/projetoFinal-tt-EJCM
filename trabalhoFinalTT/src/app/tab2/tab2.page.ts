@@ -8,10 +8,10 @@ import { LivroService } from '../services/livro.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page  {
- 
-	
+
+
   constructor(private router: Router, public LivroService:LivroService) {
-    
+
   }
 
   praOferta(){

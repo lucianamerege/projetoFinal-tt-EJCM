@@ -37,7 +37,7 @@ export class HistoricoPage implements OnInit {
   }
 
   registrarComentario( registerForm ) {
-  
+
     if ( registerForm.status == "VALID") {
 
       this.AuthService.registrarComentario( registerForm.value ).subscribe(

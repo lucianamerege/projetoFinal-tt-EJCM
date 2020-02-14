@@ -32,7 +32,6 @@ export class LoginPage implements OnInit {
       this.AuthService.logarUser( loginForm.value ).subscribe(
         (res) => {
           console.log( res );
-          console.log( res.message );
           console.log( loginForm );
           localStorage.setItem('userToken', res.success.token);
           localStorage.setItem('userId', res.success.id);

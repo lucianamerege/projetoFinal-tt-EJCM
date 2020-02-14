@@ -22,13 +22,13 @@ class LivroController extends Controller
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
         $livro->info = $request->info;
-        
+
         if($request->photo) {
             $file = $request->file('photo');
             $filename = 'livro_'. uniqid(). '.' .$file->getClientOriginalExtension();
             $path = $file->storeAs('public',$filename);
             $livro->photo = 'http://localhost:8000/storage/'.$filename;
-        } 
+        }
         $livro->save();
         return response()->json($livro);
     }
@@ -103,7 +103,11 @@ class LivroController extends Controller
         return response()->json([$livros]);
     }
 
-
+    public function listVenda($id) {
+           $user = User::find($id);
+           $livro = Historico::all()->where('vendedor_id',$user->id);
+           return $livro;
+       }
 
 
 

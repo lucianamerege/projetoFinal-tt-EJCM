@@ -54,6 +54,8 @@ Route::delete('deletaGenero/{id}', 'GeneroController@deleteGenero');//deletar um
 Route::post('register', 'API\PassportController@register');   //funcoes como essa que nao tem como ordernar
 Route::post('login', 'API\PassportController@login');          //deixei sozinha como post para entender
 
+Route::get('listVenda/{id}', 'LivroController@listVenda');
+
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::get('listHistorico', 'API\PassportController@listHistorico');

@@ -1,4 +1,5 @@
-<ion-content>
+<!-- <ion-row class="ion-justify-content-center"><ion-spinner class="loading" name="crescent" color="primary" duration="3000" *ngIf="loading"></ion-spinner></ion-row> -->
+<ion-content *ngIf="!loading">
     <ion-card>
         <ion-card-content class="texto">
             <ion-row>
@@ -23,8 +24,8 @@
     <ion-row>
         <ion-col>{{livro?.info}}</ion-col>
         <ion-col>
-            <ion-button class="botao" (click)="presentToast()"(click)="compraLivro(livro?.id)">Comprar</ion-button>
+            <ion-button *ngIf="sameUser; else editar" class="botao" (click)="presentToast()"(click)="compraLivro(livro?.id)">Comprar</ion-button>
+            <ng-template #editar><ion-button class="botao" (click)="editaLivro(livroId)">Editar</ion-button></ng-template>
         </ion-col>
     </ion-row>
-
 </ion-content>

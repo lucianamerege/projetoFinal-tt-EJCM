@@ -4,13 +4,15 @@ import { LivroService } from '../../services/livro.service';
 import { ToastController } from '@ionic/angular'
 
 @Component({
-  selector: 'app-livro',
-  templateUrl: './livro.page.html',
-  styleUrls: ['./livro.page.scss'],
+    selector: 'app-livro',
+    templateUrl: './livro.page.html',
+    styleUrls: ['./livro.page.scss'],
 })
 export class LivroPage implements OnInit {
   livroId;
   livro;
+  userId;
+  sameUser;
 
   constructor(public ToastController: ToastController, public Router: Router, public route: ActivatedRoute, public LivroService: LivroService) {
     this.livroId = Number(this.route.snapshot.paramMap.get('id'));
@@ -41,7 +43,23 @@ export class LivroPage implements OnInit {
     })
     toast.present();
   }
-  
+  editaLivro(id) {
+    console.log('clicou');
+    //this.router.navigate[('/editarLivro')];
+}
+
+  ionViewWillEnter() {
+    this.userId = localStorage.getItem('userId');
+}
+
+  //checa se o usuário e o vendedor são a mesma pessoa
+  userCheck() {
+    if (this.userId == this.livro.vendedor_id) {
+        this.sameUser = true;
+    } else {
+        this.sameUser = false;
+    }
+}
   ngOnInit() {
     
   }
