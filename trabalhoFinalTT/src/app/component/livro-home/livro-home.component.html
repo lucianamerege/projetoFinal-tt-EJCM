@@ -1,7 +1,7 @@
 <ion-row>
     <ion-col size="6" *ngFor=" let livro of livros">
       <ion-card (click)="navegar(livro.id)">
-        <img *ngIf="livro.photo" class="livro" src="{{livro.photo}}"/> <!-- Foto do Usuário -->
+        <img *ngIf="livro.photo" class="livro" src="{{livro.photo}}"/> 
         <img *ngIf="!livro.photo" class="livro" src="../../../assets/ler.jpg"/>
         <ion-card-content>
           <ion-card-subtitle>{{livro?.name}}</ion-card-subtitle>

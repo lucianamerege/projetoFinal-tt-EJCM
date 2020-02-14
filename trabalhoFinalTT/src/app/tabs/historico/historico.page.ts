@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HistoricoPage implements OnInit {
 
-  livros: any[]
+  historicos: any[]
   Ativo: boolean = true;
   registerForm: FormGroup;
 
@@ -19,7 +19,7 @@ export class HistoricoPage implements OnInit {
     this.registerForm = this.formbuilder.group({
     text: [null, [Validators.required, Validators.maxLength(100)]],
     });
-    this.ListaLivro();
+    this.listHistorico();
     this.isActive();
   }
 
@@ -53,10 +53,10 @@ export class HistoricoPage implements OnInit {
     this.Ativo = !this.Ativo;
     console.log(this.Ativo);
   }
-  ListaLivro():any{
-		this.LivroService.listaLivro().subscribe(
+  listHistorico():any{
+		this.LivroService.listHistorico().subscribe(
       (res) => {
-			  this.livros = res;
+			  this.historicos = res;
 			  console.log(res)
 		})
 	}

@@ -16,7 +16,9 @@ export class LivroHomeComponent implements OnInit {
     this.ListaLivro();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   navegar(id){
     console.log(id);
@@ -24,6 +26,7 @@ export class LivroHomeComponent implements OnInit {
   }
 
   ListaLivro():any{
+
 		this.LivroService.listaLivro().subscribe(
       (res) => {
 			  this.livros = res;

@@ -23,11 +23,19 @@ export class LivroService {
   listaLivro( ): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'listaLivro', this.httpHeaders);
   }
+  listHistorico( ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+    return this.HttpClient.get( this.apiUrl + 'listHistorico', this.httpHeaders);
+  }
   showLivro(id:number): Observable<any> {
     return this.HttpClient.get( this.apiUrl + 'mostraLivro/' + id , this.httpHeaders);
   }
   criaLivro(form): Observable<any> {
     return this.HttpClient.post(this.apiUrl + 'criaLivro', form, this.httpHeadersDois); 
+  }
+  compraLivro(id:number): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+    return this.HttpClient.put( this.apiUrl + 'compraLivro/' + id , null, this.httpHeaders);
   }
   constructor(public HttpClient: HttpClient) { }
 }

@@ -37,7 +37,9 @@ export class OfertaPage implements OnInit {
     console.log(ofertaForm);
     if ( ofertaForm.status == "VALID") {
       let formData = new FormData(); // Inicia o objeto especial FormData
-      
+
+      console.log()
+
       formData.append("name", ofertaForm.value.name);
       formData.append("autor", ofertaForm.value.autor);
       formData.append("estado", ofertaForm.value.estado);
@@ -45,6 +47,7 @@ export class OfertaPage implements OnInit {
       formData.append("genero", ofertaForm.value.genero);
       formData.append("resumo", ofertaForm.value.resumo);
       formData.append("info", ofertaForm.value.info);
+      formData.append("vendedor_id", localStorage.getItem('user_id') );
       if(this.photoFile) formData.append("photo", this.photoFile); // Coloca o arquivo da foto no FormData, se existir
       
       this.livroService.criaLivro(formData).subscribe(
