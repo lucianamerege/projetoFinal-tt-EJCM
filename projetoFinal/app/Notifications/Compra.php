@@ -43,7 +43,7 @@ class Compra extends Notification
         return (new MailMessage)
                     ->greeting('Olá, '.$user->name)
                     ->line('Sua compra foi efetuada com sucesso!')
-                    ->action('Confira seu produto', url('/'))
+                    ->action('Confira seu produto comprado', url('http://localhost:8000/tabs/historico'))
                     ->line('Obrigado por usar Liber!');
     }
 
