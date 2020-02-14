@@ -22,21 +22,36 @@ class LivroController extends Controller
         $livro->resumo = $request->resumo;
         $livro->estado = $request->estado;
         $livro->info = $request->info;
+        $livro->vendedor_id = $user->id;
 
-        if($request->photo) {
+        if($request->photo){
             $file = $request->file('photo');
             $filename = 'livro_'. uniqid(). '.' .$file->getClientOriginalExtension();
-            $path = $file->storeAs('public',$filename);
-            $livro->photo = 'http://localhost:8000/storage/'.$filename;
+            $path = $file->storeAs('public', $filename);
+            $livro->photo = 'http://localhost:8000/storage/' .$filename;
         }
         $livro->save();
         return response()->json($livro);
     }
 
-    public function listLivro(){
-        $livro = Livro::all();
+    public function listLivros(){
+        $livro = Livro::all()->where('status',true);
         return response()->json($livro);
     }
+
+
+    public function listLivroTrue(){
+        $user = Auth::user();
+        $livro = Livro::all()->where('vendedor_id', $user->id);
+        return response()->json($livro);
+    }
+    
+    public function listLivroFalse(){
+        $user = Auth::user();
+        $livro = Livro::all()->where('comprador_id', $user->id);
+        return response()->json($livro);
+    }
+
 
     public function showLivro($id){
         $livro = Livro::findOrFail($id);
@@ -84,7 +99,7 @@ class LivroController extends Controller
     }
 
     public function showPhoto($id){        //Essa função mostra a foto do livro para o usuário pelo front
-        $user = Livro::findOrFail($id);      //permitindo o download caso queira
+        $user = Livro::findOrFail($id);    //permitindo o download caso queira
         return Storage::download($livro->photo);
 
     }

@@ -24,7 +24,7 @@ Route::get('mostraUser/{id}', 'UserController@showUser');// mostrar um user espe
 
 
 //ROTAS PARA LIVROS
-Route::get('listaLivro', 'LivroController@listLivro');//listar uma livro
+Route::get('listaLivros', 'LivroController@listLivros');//mostra os livro
 Route::get('mostraLivro/{id}', 'LivroController@showLivro');//rota para mostrar uma livro específico
 Route::get('mostraOferta/{id}', 'LivroController@mostraOferta');//rota para mostrar uma livro específico
 
@@ -50,16 +50,19 @@ Route::put('atualizaGenero/{id}', 'HistoricoController@updateGenero');//atualiza
 Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//deletar um Genero específico
 
 //ROTAS PARA FUNCIONALIDADES
-Route::post('register', 'API\PassportController@register');
-Route::post('login', 'API\PassportController@login');
+Route::post('register', 'API\PassportController@register');   //funcoes como essa que nao tem como ordernar
+Route::post('login', 'API\PassportController@login');          //deixei sozinha como post para entender
 
 Route::get('listVenda/{id}', 'LivroController@listVenda');
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
-    Route::get('getDetails', 'API\PassportController@getDetails');
-    Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
+    Route::get('listHistorico', 'API\PassportController@listHistorico');
+    Route::get('listaLivroTrue', 'LivroController@listLivroTrue');//listar livros com status true
+    Route::get('listaLivroFalse', 'LivroController@listLivroFalse');//listar livros com status false
+    Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
     Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
+    Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
     Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
     Route::delete('deletaUser/{id}', 'UserController@deleteUser')->middleware('isAdmin');//admin deleta um user específico
     Route::delete('deletaLivro/{id}', 'LivroController@deleteLivro');//deletar um livro específico

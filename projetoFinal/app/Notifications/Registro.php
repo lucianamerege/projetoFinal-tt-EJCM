@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Carbon\Carbon;
 
 class Venda extends Notification
 {
@@ -42,9 +43,9 @@ class Venda extends Notification
     {
         return (new MailMessage)
                     ->greeting('Olá,' . $user->name . '!')
-                    ->line('Sua venda foi efetuada com sucesso!')
-                    ->action('Confira o produto vendido', url('/'))
-                    ->line('Obrigado por usar Liber!');
+                    ->line('Seu Registro foi efetuado com sucesso!')
+                    ->action('Confira o seu perfil aqui', url('http://localhost:8000/tabs/tab2'))
+                    ->line('Bem vindo a família Liber!');
     }
 
     /**
