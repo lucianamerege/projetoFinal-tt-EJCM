@@ -53,10 +53,11 @@ Route::delete('deletaGenero/{id}', 'HistoricoController@deleteGenero');//deletar
 Route::post('register', 'API\PassportController@register');
 Route::post('login', 'API\PassportController@login');
 
+Route::get('listVenda/{id}', 'LivroController@listVenda');
+
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
-    Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::get('listHistorico', 'API\PassportController@listHistorico');
+    Route::get('getDetails', 'API\PassportController@getDetails');
     Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
     Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
     Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
